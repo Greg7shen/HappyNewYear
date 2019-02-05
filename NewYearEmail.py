@@ -9,9 +9,9 @@ import time
 
 def get_qq(element):
     """
-    :param element: just relevant element
+    :param element: relevant element
     :return: I'd like to get child elements of the element which I pass in.
-            And the function will return QQ number hidden in each child element.
+            And the function will return QQ number hidden in each child element's attribute.
     """
     return re.search('\d+', element.get_attribute('href')).group()
 
@@ -44,10 +44,14 @@ def mail(to):
 
 
 # If today is the 5th day, execute the script.
-if time.localtime().tm_mday == 5:
+# Notice the 5th day is the 2019 Lunar New Year's first day.
+# You can change it whenever you want.
+while time.localtime().tm_mday == 5:
     # Initialize
     browser = webdriver.Firefox()
     browser.get('https://user.qzone.qq.com')
+    # Of couse I won't tell you what my qq number and my password are.
+    # You can change them into your own qq number and password if necessary.
     username = "1234567"
     password = "666666666"
 
@@ -83,3 +87,5 @@ if time.localtime().tm_mday == 5:
         mail(qq + '@qq.com')
     # All done!
     print("All done!")
+    break
+    
